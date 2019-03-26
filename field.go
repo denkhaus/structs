@@ -31,8 +31,14 @@ func (f *Field) Value() interface{} {
 	return f.value.Interface()
 }
 
+// Value returns the pointer to the underlying value of the field. It panics if the field
+// is not exported.
+func (f *Field) ValuePtr() interface{} {
+	return f.value.Addr().Interface()
+}
+
 // ReflectValue returns the underlying reflect.Value of the field.
-func (f *Field) ReflectValue() reflect.Value {
+func (f *Field) ValueReflect() reflect.Value {
 	return f.value
 }
 
